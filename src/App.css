@@ -35,6 +35,9 @@ ul li {
   flex-wrap: wrap;
   width: 100%;
 }
+.list-staffs{
+  text-align: center;
+}
 span {
   width: 45%;
   border: 1px solid;
@@ -59,13 +62,13 @@ span {
   text-align: center;
 }
 
-.info {
+/* .info {
   min-width: 160px;
   background-color: #ccc;
   max-width: 400px;
   padding: 8px;
   border-radius: 30px;
-}
+} */
 .form-info {
   margin-left: 20px;
   font-size: 20px;
@@ -159,4 +162,24 @@ address{
 
 .navbar-dark {
   background-color: #512DA8;
+}
+
+ul li{
+  margin: 0px 16px;
+  background-color: rgb(212 212 210);
+}
+a.nav-link {
+  min-width: 150px;
+  padding:0;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(5 5 5);
+}
+.list-unstyled li{
+  min-width: 100px;
+  text-align:center;
+  margin-bottom: 10px;
+}
+.btn-social-icon {
+  margin: 0 4px;
 }

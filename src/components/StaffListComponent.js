@@ -34,6 +34,7 @@ class StaffList extends React.Component {
   render() {
     const list = STAFFS.map((abc) => {
       return (
+        
         <span className="span-list" onClick={() => this.onClick(abc)}>
           <div key={abc.id} className="col">
             <img src={abc.image} alt={abc.name} />
@@ -44,6 +45,8 @@ class StaffList extends React.Component {
     });
     return (
       <div className="container-staff">
+            <h3 className="list-staffs">Danh sách nhân viên</h3>
+
         <div className="staff">{list}</div>;
         <div className="info">{this.renderInfo(this.state.selectedInfo)}</div>
 
