@@ -1,6 +1,7 @@
-import { STAFFS } from "../shared/staffs";
 import React from "react";
 import dateFormat from "dateformat";
+import { STAFFS } from "../shared/staffs";
+
 
 
 class StaffList extends React.Component {
@@ -27,7 +28,7 @@ class StaffList extends React.Component {
         </div>
       );
     } else {
-      return <div className="suggest">Bấm vào tên để xem thông tin.</div>;
+      return <div className="suggest"></div>;
     }
   };
   render() {
@@ -35,7 +36,8 @@ class StaffList extends React.Component {
       return (
         <span className="span-list" onClick={() => this.onClick(abc)}>
           <div key={abc.id} className="col">
-            {abc.name}
+            <img src={abc.image} alt={abc.name} />
+            <h4>{abc.name}</h4>
           </div>
         </span>
       );
@@ -44,6 +46,7 @@ class StaffList extends React.Component {
       <div className="container-staff">
         <div className="staff">{list}</div>;
         <div className="info">{this.renderInfo(this.state.selectedInfo)}</div>
+
       </div>
     );
   }
