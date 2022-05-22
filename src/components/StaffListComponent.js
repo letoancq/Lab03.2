@@ -7,13 +7,16 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 class StaffList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedInfo: null,
-    };
   }
-  onClick = (info) => {
-    return this.setState({ selectedInfo: info });
+
+  handleOnClickEmployee = (info) => {
+    this.props.history.push({
+          pathname: `/info`,
+          search: `id=${info.id}`,
+        }
+      )
   };
+
   renderInfo = (info) => {
     if (info != null) {
       return (
@@ -41,7 +44,7 @@ class StaffList extends React.Component {
   render() {
     const list = STAFFS.map((abc) => {
       return (
-        <span className="span-list" onClick={() => this.onClick(abc)}>
+        <span className="span-list" onClick={() => this.handleOnClickEmployee(abc)}>
           <div key={abc.id} className="col">
             <img src={abc.image} alt={abc.name} />
             <h4>{abc.name}</h4>
@@ -49,13 +52,13 @@ class StaffList extends React.Component {
         </span>
       );
     });
+
     return (
-      <div className="container-staff">
-        <h3 className="list-staffs">Danh sách nhân viên</h3>
-        <div className="staff">{list}</div>;
-        <div className="info">{this.renderInfo(this.state.selectedInfo)}</div>
-      </div>
-    );
+        <div className="container-staff">
+          <h3 className="list-staffs">Danh sách nhân viên</h3>
+          <div className="staff">{list}</div>;
+        </div>
+    )
   }
 }
 
