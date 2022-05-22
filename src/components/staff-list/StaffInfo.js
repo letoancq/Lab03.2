@@ -28,7 +28,7 @@ const StaffInfo = (props) => {
                 <h2>Họ và tên : {staffData.name}</h2>
                 <p>Ngày sinh : {dateFormat(staffData.doB, "dd/mm/yyyy")}</p>
                 <p>Ngày vào công ty : {dateFormat(staffData.startDate, "dd/mm/yyyy")} </p>
-                <p>Phòng ban : {staffData.departmentName}</p>
+                <p>Phòng ban : {staffData.department.name}</p>
                 <p>Số ngày nghỉ còn lại : {staffData.annualLeave}</p>
                 <p>Số ngày đã làm thêm : {staffData.overTime}</p>
             </div>)}
