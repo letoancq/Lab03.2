@@ -12,7 +12,8 @@ import {
 import history from "../utils/history";
 import StaffInfo from "./staff-list/StaffInfo";
 import StaffList from "./StaffListComponent";
-import DepartmentsList from "./DepartmentListComponent"
+import DepartmentsList from "./DepartmentListComponent";
+import DepartmentInfo from "../components/DepartmentInfo/DepartmentInfo"
 
 class Main extends Component {
   constructor(props) {
@@ -32,14 +33,9 @@ class Main extends Component {
               <Route path="/home" component={StaffList} />
               <Route exact path="/info" component={() => <StaffInfo />} />
               <Route path="/departmentlist" component={DepartmentsList} />
+              <Route exact path="/info" component={() => <DepartmentInfo />} />
 
-              {/* <Route
-                    exact
-                    path="/menu"
-                    component={() => <Menu staffs={this.state.staffs} />}
-                  />
-                  <Route path="/menu/:dishId" component={DishWithId} />
-                  <Route exact path="/contactus" component={Contact} /> */}
+
               <Redirect to="/home" />
             </Switch>
           </Router>
