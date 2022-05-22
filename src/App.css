@@ -31,7 +31,6 @@ ul li {
 }
 .staff {
   display: flex;
-
   flex-wrap: wrap;
   width: 100%;
 }
@@ -182,4 +181,21 @@ a.nav-link {
 }
 .btn-social-icon {
   margin: 0 4px;
+}
+.department {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+
+
+}
+.department-name{
+  padding: 8px 0;
+  text-align: center;
+  width:200px;
+  background-color:#ccc;
+  border-radius:5px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }

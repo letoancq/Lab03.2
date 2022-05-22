@@ -12,7 +12,7 @@ import {
 import history from "../utils/history";
 import StaffInfo from "./staff-list/StaffInfo";
 import StaffList from "./StaffListComponent";
-import DepartmentsList from "./DepartmentListComponent";
+import DepartmentsList from "./DepartmentListComponent"
 
 class Main extends Component {
   constructor(props) {
