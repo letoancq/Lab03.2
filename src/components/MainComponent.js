@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import StaffList from "./StaffListComponent";
 import { STAFFS } from "../shared/staffs";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
-import Info from "./InfoStaffComponent";
-import { Switch, Route, Redirect } from "react-router-dom";
+import {Switch, Route, Redirect, BrowserRouter, Router} from "react-router-dom";
+import history from "../utils/history";
+import StaffInfo from "./staff-list/StaffInfo";
+import StaffList from "./StaffListComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -18,18 +19,22 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path="/home" component={StaffList} />
-          <Route exact path='/info' component={() => <Info staffs={this.props.staffs} />} />
-          {/* <Route
-            exact
-            path="/menu"
-            component={() => <Menu staffs={this.state.staffs} />}
-          />
-          <Route path="/menu/:dishId" component={DishWithId} />
-          <Route exact path="/contactus" component={Contact} /> */}
-          <Redirect to="/home" />
-        </Switch>
+          <BrowserRouter>
+              <Router history={history}>
+                  <Switch>
+                      <Route path="/home" component={StaffList}/>
+                      <Route exact path='/info' component={() => (<StaffInfo />)}/>
+                      {/* <Route
+                    exact
+                    path="/menu"
+                    component={() => <Menu staffs={this.state.staffs} />}
+                  />
+                  <Route path="/menu/:dishId" component={DishWithId} />
+                  <Route exact path="/contactus" component={Contact} /> */}
+                      <Redirect to="/home"/>
+                  </Switch>
+              </Router>
+          </BrowserRouter>
         <Footer />
       </div>
     );
