@@ -14,9 +14,12 @@ function Footer(props) {
               </li>
               
               <li>
-                <Link to="/menu">Menu</Link>
+                <Link to="/department">Department</Link>
               </li>
               
+              <li>
+                <Link to="/payroll">Payroll</Link>
+              </li>
             </ul>
           </div>
           <div className="col-7 col-sm-5">
