@@ -12,21 +12,21 @@ class DepartmentsList extends React.Component {
   render() {
     const listDepartments = DEPARTMENTS.map((department) => {
       return (
-        <span
+        <div
           className="span-list"
           onClick={() => this.handleDepartmentsClick(department)}
         >
           <div key={department.id} className="col">
-            <h4>{department.name}</h4>
+            <h4 className="department-name">{department.name}</h4>
           </div>
-        </span>
+        </div>
       );
     });
 
     return (
       <div className="container-staffs">
         <h3 className="list-staffs">Danh sách phòng ban</h3>
-        <div className="staff">{listDepartments}</div>;
+        <div className="department">{listDepartments}</div>;
       </div>
     );
   }
