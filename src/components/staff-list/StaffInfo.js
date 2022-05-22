@@ -1,5 +1,9 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import {STAFFS} from "../../shared/staffs";
+import { Link } from "react-router-dom";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import dateFormat from "dateformat";
+
 
 const StaffInfo = (props) => {
     const [staffData, setStaffData] = useState({});
@@ -14,10 +18,16 @@ const StaffInfo = (props) => {
 
     return (
         <React.Fragment>
+            <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/home">Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>{staffData.name}</BreadcrumbItem>
+          </Breadcrumb>
             {staffData && Object.keys(staffData).length > 0 && (<div className="form-info" key={staffData.id}>
                 <h2>Họ và tên : {staffData.name}</h2>
-                <p>Ngày sinh : {staffData.doB}</p>
-                <p>Ngày vào công ty : {staffData.startDate}</p>
+                <p>Ngày sinh : {dateFormat(staffData.doB, "dd/mm/yyyy")}</p>
+                <p>Ngày vào công ty : {dateFormat(staffData.startDate, "dd/mm/yyyy")} </p>
                 <p>Phòng ban : {staffData.departmentName}</p>
                 <p>Số ngày nghỉ còn lại : {staffData.annualLeave}</p>
                 <p>Số ngày đã làm thêm : {staffData.overTime}</p>
