@@ -47,9 +47,7 @@ span {
   border-radius: 8px;
   background-color: #abe0eb;
 }
-/* span.span-list {
-  margin: 4px 4px;
-} */
+
 .col {
   width: 100%;
   font-weight: bold;
@@ -71,6 +69,19 @@ span {
 .form-info {
   margin-left: 20px;
   font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.staff-image{
+  width:286px;
+  text-align: center;
+  padding-bottom: 12px;
+}
+.staff-image img{
+  height:100%;
+  border-radius: 5px;
 }
 
 .changecol {
@@ -86,49 +97,7 @@ span {
   background-color: #ccc;
   color: black;
 }
-/* desktop */
-@media screen and (min-width: 968px) {
-  span {
-    width: 30%;
-  }
-}
-/* Tablet */
-@media screen and (min-width: 768px) and (max-width: 967px) {
-  span {
-    width: 48%;
-  }
-}
-/* Mobile */
-@media screen and (max-width: 767px) {
-  span {
-    width: 90%;
-  }
-  body {
-    font-size: 10px;
-  }
-  .container {
-    width: 70%;
-    margin: 0;
-  }
-  .navbar {
-    font-size: 16px;
-  }
-  .changecol {
-    font-size: 10px;
-  }
-  .info {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .form-info,
-  h2 {
-    font-size: 14px;
-  }
-  .suggest {
-    margin: auto;
-    font-size: 16px;
-  }
-}
+
 .row-header{
   margin:0px auto;
   padding:0px auto;
@@ -168,8 +137,15 @@ ul li{
   background-color: rgb(212 212 210);
 }
 a.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 150px;
   padding:0;
+}
+.fa {
+  margin-right: 4px;
+  margin-left: 0;
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgb(5 5 5);
@@ -198,4 +174,94 @@ a.nav-link {
   border-radius:5px;
   margin-bottom: 20px;
   cursor: pointer;
+}
+
+/* PayOff CSS */
+.table-pay{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.payoff{
+  height:220px;
+  border: 1px solid ;
+  margin:16px;
+  border-radius: 20px;
+}
+.card-payoff{
+  padding:12px;
+}
+.infostaff{
+  padding: 0 20px;
+  font-weight:500;
+}
+.infopay{
+  background-color:rgba(229, 226, 226, 0.726);
+  padding:8px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+ol.breadcrumb {
+    margin-left: 145px;
+    width: 240px;
+}
+
+
+
+
+/* desktop */
+@media screen and (min-width: 968px) {
+  .span-list {
+    width: 16%;
+  }
+  .payoff{
+    width: 30%;
+  }
+}
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 967px) {
+  .span-list {
+    width: 30%;
+  }
+  .payoff{
+    width: 45%;
+  }
+}
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .span-list {
+    
+    width: 45%;
+  }
+  body {
+    font-size: 10px;
+  }
+  .container {
+    width: 70%;
+    margin: 0;
+  }
+  .navbar {
+    font-size: 16px;
+  }
+  .changecol {
+    font-size: 10px;
+  }
+  .info {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .form-info,
+  h2 {
+    font-size: 14px;
+  }
+  .suggest {
+    margin: auto;
+    font-size: 16px;
+  }
+  .payoff{
+    width: 90%;
+  }
 }
