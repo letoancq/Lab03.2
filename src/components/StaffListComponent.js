@@ -1,6 +1,8 @@
 import React from "react";
 import { STAFFS } from "../shared/staffs";
 
+
+
 class StaffList extends React.Component {
   handleOnClickEmployee = (info) => {
     this.props.history.push({

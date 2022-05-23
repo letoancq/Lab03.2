@@ -42,7 +42,7 @@ toggleNav(){
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className="nav-link" to="/payroll">
+                <NavLink className="nav-link" to="/payoff">
                   <span className="fa fa-list fa-lg"></span> Payroll
                 </NavLink>
               </NavItem>
