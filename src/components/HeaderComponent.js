@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem } from "reactstrap";
-import {NavLink, } from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 class Headers extends Component { 
 
   constructor(props) {
@@ -32,19 +32,19 @@ toggleNav(){
 
             <Nav navbar>
               <NavItem>
-                <NavLink className="nav-link" to="/home">
+                <Link className="nav-link" to="/home">
                   <span className="fa fa-home fa-lg"></span> Home
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink className="nav-link" to="/departmentlist">
+                <Link className="nav-link" to="/departmentlist">
                   <span className="fa fa-list fa-lg"></span> Department
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink className="nav-link" to="/payoff">
+                <Link className="nav-link" to="/payoff">
                   <span className="fa fa-list fa-lg"></span> Payroll
-                </NavLink>
+                </Link>
               </NavItem>
             </Nav>
             </Collapse>

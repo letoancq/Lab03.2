@@ -20,13 +20,13 @@ const StaffInfo = (props) => {
         <React.Fragment>
             <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/home">Home</Link>
+              <Link to="/home">Home</Link> 
             </BreadcrumbItem>
             <BreadcrumbItem active>{staffData.name}</BreadcrumbItem>
           </Breadcrumb>
             {staffData && Object.keys(staffData).length > 0 && (<div className="form-info" key={staffData.id}>
                <div className="staff-image">
-                   <img src={staffData.image} ></img>
+                   <img src={staffData.image} alt={staffData.name}></img>
                </div>
                <div className="staff-information">
                 <h2>Họ và tên : {staffData.name}</h2>
