@@ -13,10 +13,10 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <Main />
+          <div>
+            <Main />
+          </div>
         </BrowserRouter>
-       
-       
       </div>
     );
   }
