@@ -20,7 +20,7 @@ const StaffInfo = (props) => {
         <React.Fragment>
             <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/home">Home</Link> 
+              <Link to="/">Home</Link> 
             </BreadcrumbItem>
             <BreadcrumbItem active>{staffData.name}</BreadcrumbItem>
           </Breadcrumb>

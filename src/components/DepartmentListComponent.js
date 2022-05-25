@@ -1,5 +1,5 @@
 import React from "react";
-import { DEPARTMENTS } from "../shared/staffs";
+import { DEPARTMENTS, STAFFS } from "../shared/staffs";
 
 class DepartmentsList extends React.Component {
   handleDepartmentsClick = (department) => {
@@ -7,7 +7,11 @@ class DepartmentsList extends React.Component {
       pathname: `/department/${department.name}`,
     });
   };
-
+  handleDataClick = (department) => {
+    return(
+      STAFFS.filter(b => b.department.name === department.name)
+    )
+  }
   render() {
     const listDepartments = DEPARTMENTS.map((department) => {
       return (
@@ -16,7 +20,7 @@ class DepartmentsList extends React.Component {
           onClick={() => this.handleDepartmentsClick(department)}
         >
           <div key={department.id} className="col">
-            <h4 className="department-name">{department.name}</h4>
+            <h4 className="department-name" onClick = {() => this.handleDataClick(department)}>{department.name}</h4>
           </div>
         </div>
       );

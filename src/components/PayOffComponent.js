@@ -3,7 +3,7 @@ import { STAFFS } from "../shared/staffs";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
-class PayOff extends React.Component {
+class PayRoll extends React.Component {
   render() {
     const list = STAFFS.map((staff) => {
       const pay = (
@@ -46,4 +46,4 @@ class PayOff extends React.Component {
   }
 }
 
-export default PayOff;
+export default PayRoll;
