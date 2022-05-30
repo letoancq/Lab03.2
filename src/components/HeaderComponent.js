@@ -9,6 +9,7 @@ class Headers extends Component {
       isNavOpen: false,
     };
     this.toggleNav = this.toggleNav.bind(this);
+    
   }
 
 toggleNav(){
@@ -32,7 +33,7 @@ toggleNav(){
 
             <Nav navbar>
               <NavItem>
-                <Link className="nav-link" to="/home">
+                <Link className="nav-link" to="/">
                   <span className="fa fa-home fa-lg"></span> Home
                 </Link>
               </NavItem>

@@ -177,7 +177,7 @@ a.nav-link {
 }
 
 /* PayOff CSS */
-.table-pay{
+#table-pay{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

@@ -1,10 +1,12 @@
 import React from "react";
-import { DEPARTMENTS, STAFFS } from "../shared/staffs";
+import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
 
 class DepartmentsList extends React.Component {
   handleDepartmentsClick = (department) => {
     this.props.history.push({
-      pathname: `/department/${department.name}`,
+      pathname: `/dep/`,
+      search: `dep=${department.name}`,
+
     });
   };
   handleDataClick = (department) => {

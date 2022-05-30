@@ -1,39 +1,41 @@
 import React, { Component } from "react";
-import { STAFFS } from "../shared/staffs";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
-import { Switch, Route} from "react-router-dom";
 import StaffInfo from "./staff-list/StaffInfo";
-import StaffList from "./StaffListComponent";
-import DepartmentsList from "./DepartmentListComponent";
-import PayRoll from "./PayOffComponent";
+import StaffList from "./staff-list/StaffListComponent";
+import DepartmentsList from "./Department/DepartmentListComponent";
+import PayRoll from "./Payroll/PayOffComponent";
 import NotFound from "./NotFoundPage";
-import DepartmentData from "./staffOfDepartment/StaffOfDepartment"
+import DepartmentData from "./Department/DepartmentInfo";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
+const mapStateToProps = (state) => {
+  return {
+    staffs: state.staffs,
+  };
+};
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      staffs: STAFFS,
-    };
   }
 
   render() {
     return (
       <div>
         <Header />
-          <Switch>
-            <Route path="/home" component={StaffList} />
-            <Route exact path="/info" component={() => <StaffInfo />} />
-            <Route path="/departmentlist" component={DepartmentsList} />
-            <Route exact path="/departmentlist/department.name" component={() => <DepartmentData />} />
-            <Route path="/payoff" component={PayRoll} />
-            <Route component={NotFound} />
-          </Switch>
+        <Switch>
+          <Route exact path="/info" component={() => <StaffInfo />} />
+          <Route path="/departmentlist" component={DepartmentsList} />
+          <Route exact path="/dep" component={() => <DepartmentData />} />
+          <Route path="/payoff" component={PayRoll} />
+          <Route path="/" component={StaffList} />
+          <Route component={NotFound} />
+        </Switch>
         <Footer />
       </div>
     );
   }
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));

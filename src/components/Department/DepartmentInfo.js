@@ -10,25 +10,25 @@ const DepartmentData = (props) => {
     const params = new URLSearchParams(window.location.search)
 
     useEffect(() => {
-        const departmentDataFilter = STAFFS.department.filter(department => {
-            return department.name === params.get('name');
+        const departmentDataFilter = STAFFS.filter(departmentss => {
+            return departmentss.department.name === String(params.get('name'));
         })[0];
         setDepartmentData(departmentDataFilter);
     }, [params]);
-
+    console.log(departmentData)
     return (
         <React.Fragment>
             <Breadcrumb>
             <BreadcrumbItem>
-              <Link to="/home">Home</Link> 
+              <Link to="/">Home</Link> 
             </BreadcrumbItem>
-            <BreadcrumbItem active>{departmentData.name}</BreadcrumbItem>
+            {/* <BreadcrumbItem active>{departmentData.name}</BreadcrumbItem> */}
           </Breadcrumb>
-            {departmentData && Object.keys(departmentData).length > 0 && (<div className="form-info" key={departmentData.id}>
-            <h2>Họ và tên : {departmentData.name}</h2>
-                <p>Ngày sinh : {dateFormat(departmentData.doB, "dd/mm/yyyy")}</p>
-                <p>Ngày vào công ty : {dateFormat(departmentData.startDate, "dd/mm/yyyy")} </p>
-            </div>)}
+            {/* {departmentData && Object.keys(departmentData).length > 0 && (<div className="form-info" key={departmentData.id}> */}
+            <h2>Họ và tên : </h2>
+                {/* <p>Ngày sinh : {dateFormat(departmentData.doB, "dd/mm/yyyy")}</p> */}
+                {/* <p>Ngày vào công ty : {dateFormat(departmentData.startDate, "dd/mm/yyyy")} </p> */}
+            {/* </div>)} */}
         </React.Fragment>
     )
 }

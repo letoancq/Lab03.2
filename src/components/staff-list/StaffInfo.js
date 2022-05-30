@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import {STAFFS} from "../../shared/staffs";
+import {STAFFS, DEPARTMENTS} from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";
@@ -15,7 +15,6 @@ const StaffInfo = (props) => {
         })[0];
         setStaffData(staffDataFilter);
     }, [params]);
-
     return (
         <React.Fragment>
             <Breadcrumb>

@@ -1,5 +1,5 @@
 import React from "react";
-import { STAFFS } from "../shared/staffs";
+import { STAFFS } from "../../shared/staffs";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -29,17 +29,30 @@ class PayRoll extends React.Component {
       );
     });
 
+    function Search() {
+      const input = document.querySelector("#myInput");
+      const table = document.querySelectorAll(".infostaff");
+
+      let keyword = input.val().toLowerCase();
+      table.filter(function () {
+        table.toggle(table.text().toLowerCase().indexOf(keyword) > -1);
+      });
+    }
     return (
       <React.Fragment>
         <Breadcrumb>
           <BreadcrumbItem>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </BreadcrumbItem>
           <BreadcrumbItem active>PayOff</BreadcrumbItem>
         </Breadcrumb>
+        <div className="search">
+          <input type="text" id="myInput" value={'abc'}></input>
+          <button onClick={Search}>Search</button>
+        </div>
         <div className="container-staff">
           <h3 className="list-staffs">Bảng lương nhân viên</h3>
-          <div className="table-pay">{list}</div>
+          <div id="table-pay">{list}</div>
         </div>
       </React.Fragment>
     );
