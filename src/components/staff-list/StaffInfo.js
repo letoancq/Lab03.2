@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-import {STAFFS, DEPARTMENTS} from "../../shared/staffs";
+import {STAFFS} from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";

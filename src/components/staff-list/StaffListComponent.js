@@ -29,8 +29,8 @@ class StaffList extends React.Component {
     return (
       <div className="container-staff">
         <h3 className="list-staffs">Danh sách nhân viên</h3>
-          <input type="text" className="search-staff-input">
-          </input>
+          <input type="text" className="search-staff-input" />
+          
           <span className="search-staff-btn">Search</span>          
         <div className="staff">{list}</div>;
       </div>

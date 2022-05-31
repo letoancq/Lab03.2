@@ -6,9 +6,10 @@ class DepartmentsList extends React.Component {
     this.props.history.push({
       pathname: `/dep/`,
       search: `dep=${department.name}`,
-
+      
     });
   };
+  
   handleDataClick = (department) => {
     return(
       STAFFS.filter(b => b.department.name === department.name)

@@ -2,7 +2,6 @@ import React, { useEffect, useState} from 'react';
 import {STAFFS} from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import dateFormat from "dateformat";
 
 
 const DepartmentData = (props) => {
@@ -11,11 +10,12 @@ const DepartmentData = (props) => {
 
     useEffect(() => {
         const departmentDataFilter = STAFFS.filter(departmentss => {
-            return departmentss.department.name === String(params.get('name'));
+            // console.log(params.get('name'));
+            
+            return departmentss.department.name === params.get('name');
         })[0];
         setDepartmentData(departmentDataFilter);
     }, [params]);
-    console.log(departmentData)
     return (
         <React.Fragment>
             <Breadcrumb>
