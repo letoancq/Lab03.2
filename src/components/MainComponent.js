@@ -10,20 +10,20 @@ import DepartmentData from "./Department/DepartmentInfo";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+
 const mapStateToProps = (state) => {
   return {
     staffs: state.staffs,
   };
 };
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
     return (
       <div>
         <Header />
+
         <Switch>
           <Route exact path="/info" component={() => <StaffInfo />} />
           <Route path="/departmentlist" component={DepartmentsList} />

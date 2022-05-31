@@ -15,6 +15,7 @@ const StaffInfo = (props) => {
         })[0];
         setStaffData(staffDataFilter);
     }, [params]);
+
     return (
         <React.Fragment>
             <Breadcrumb>
