@@ -8,7 +8,6 @@ import dateFormat from "dateformat";
 const StaffInfo = (props) => {
     const [staffData, setStaffData] = useState({});
     const params = new URLSearchParams(window.location.search)
-
     useEffect(() => {
         const staffDataFilter = STAFFS.filter(staff => {
             return staff.id === Number(params.get('id'));

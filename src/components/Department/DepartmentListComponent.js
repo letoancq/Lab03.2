@@ -4,8 +4,8 @@ import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
 class DepartmentsList extends React.Component {
   handleDepartmentsClick = (department) => {
     this.props.history.push({
-      pathname: `/dep/`,
-      search: `dep=${department.name}`,
+      pathname: `/dep`,
+      search: `name=${department.name}`,
       
     });
   };
