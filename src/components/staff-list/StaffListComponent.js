@@ -1,7 +1,7 @@
 import React from "react";
 import { STAFFS } from "../../shared/staffs";
 
-const modalAdd = document.querySelector('modal-add-staff')
+// const modalAdd = document.querySelector("modal-add-staff");
 class StaffList extends React.Component {
   handleOnClickEmployee = (info) => {
     this.props.history.push({
@@ -9,7 +9,10 @@ class StaffList extends React.Component {
       search: `id=${info.id}`,
     });
   };
- 
+
+  showAddStaffModal = () => {
+    console.log("abc");
+  };
   render() {
     const list = STAFFS.map((staff) => {
       return (
@@ -24,18 +27,15 @@ class StaffList extends React.Component {
         </span>
       );
     });
-   function showAddStaffModal(){
 
-     
-   }
     return (
       <div className="container-staff">
         <h3 className="list-staffs">Danh sách nhân viên</h3>
         <input type="text" className="search-staff-input" />
         <span className="search-staff-btn">Search</span>
-        <span className="add-staff-btn" onClick={showAddStaffModal()}>Thêm</span>
-
-
+        <span className="add-staff-btn" onClick={this.showAddStaffModal()}>
+          Thêm
+        </span>
         {/* Modal add new staff */}
         <div className="modal-add-staff">
           <div className="modal-add-staff-container">
@@ -46,7 +46,11 @@ class StaffList extends React.Component {
               <label className="col-4">Tên</label>
               <input type="text" className="new-staff-name col-8" />
               <label className="col-4">Ngày Sinh</label>
-              <input type="text" className="new-staff-doB col-8" placeholder={"dd/mm/yyyy"}/>
+              <input
+                type="text"
+                className="new-staff-doB col-8"
+                placeholder={"dd/mm/yyyy"}
+              />
               <label className="col-4">Ngày vào công ty</label>
               <input type="text" className="new-staff-startDate col-8" />
               <label className="col-4">Phòng ban</label>
@@ -64,7 +68,9 @@ class StaffList extends React.Component {
               <label className="col-4">Số ngày làm thêm</label>
               <input type="text" className="new-staff-overTime col-8" />
 
-              <button className="add-btn" onClick={this.addnewStaff}>Add</button>
+              <button className="add-btn" onClick={this.addnewStaff}>
+                Add
+              </button>
             </div>
           </div>
         </div>

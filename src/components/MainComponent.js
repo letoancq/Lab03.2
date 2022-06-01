@@ -6,7 +6,7 @@ import StaffList from "./staff-list/StaffListComponent";
 import DepartmentsList from "./Department/DepartmentListComponent";
 import PayRoll from "./Payroll/PayOffComponent";
 import NotFound from "./NotFoundPage";
-import DepartmentData from "./Department/DepartmentInfo";
+import DepartmentData from "./Department/DepartmentData";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 

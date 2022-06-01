@@ -34,7 +34,7 @@ ul li {
   flex-wrap: wrap;
   width: 100%;
 }
-.list-staffs{
+.list-staffs {
   text-align: center;
 }
 span {
@@ -74,13 +74,13 @@ span {
   justify-content: center;
   margin-bottom: 30px;
 }
-.staff-image{
-  width:286px;
+.staff-image {
+  width: 286px;
   text-align: center;
   padding-bottom: 12px;
 }
-.staff-image img{
-  height:100%;
+.staff-image img {
+  height: 100%;
   border-radius: 5px;
 }
 
@@ -98,41 +98,41 @@ span {
   color: black;
 }
 
-.row-header{
-  margin:0px auto;
-  padding:0px auto;
+.row-header {
+  margin: 0px auto;
+  padding: 0px auto;
 }
 
 .row-content {
-  margin:0px auto;
+  margin: 0px auto;
   padding: 50px 0px 50px 0px;
   border-bottom: 1px ridge;
-  min-height:400px;
+  min-height: 400px;
 }
 
-.footer{
-  background-color: #D1C4E9;
-  margin:0px auto;
+.footer {
+  background-color: #d1c4e9;
+  margin: 0px auto;
   padding: 20px 0px 20px 0px;
 }
 .jumbotron {
-  padding:70px 30px 70px 30px;
-  margin:0px auto;
-  background: #9575CD ;
-  color:floralwhite;
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background: #9575cd;
+  color: floralwhite;
 }
 
-address{
-  font-size:80%;
-  margin:0px;
-  color:#0f0f0f;
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
 }
 
 .navbar-dark {
-  background-color: #512DA8;
+  background-color: #512da8;
 }
 
-ul li{
+ul li {
   margin: 0px 16px;
   background-color: rgb(212 212 210);
 }
@@ -141,7 +141,7 @@ a.nav-link {
   justify-content: center;
   align-items: center;
   min-width: 150px;
-  padding:0;
+  padding: 0;
 }
 .fa {
   margin-right: 4px;
@@ -150,9 +150,9 @@ a.nav-link {
 .navbar-dark .navbar-nav .nav-link {
   color: rgb(5 5 5);
 }
-.list-unstyled li{
+.list-unstyled li {
   min-width: 100px;
-  text-align:center;
+  text-align: center;
   margin-bottom: 10px;
 }
 .btn-social-icon {
@@ -163,61 +163,56 @@ a.nav-link {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-
-
 }
-.department-name{
+.department-name {
   padding: 8px 0;
   text-align: center;
-  width:200px;
-  background-color:#ccc;
-  border-radius:5px;
+  width: 200px;
+  background-color: #ccc;
+  border-radius: 5px;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
 /* PayOff CSS */
-#table-pay{
+#table-pay {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 30px;
   font-size: 16px;
 }
-.payoff{
-  height:220px;
-  border: 1px solid ;
-  margin:16px;
+.payoff {
+  height: 220px;
+  border: 1px solid;
+  margin: 16px;
   border-radius: 20px;
 }
-.card-payoff{
-  padding:12px;
+.card-payoff {
+  padding: 12px;
 }
-.infostaff{
+.infostaff {
   padding: 0 20px;
-  font-weight:500;
+  font-weight: 500;
 }
-.infopay{
-  background-color:rgba(229, 226, 226, 0.726);
-  padding:8px;
+.infopay {
+  background-color: rgba(229, 226, 226, 0.726);
+  padding: 8px;
   font-weight: bold;
   border-radius: 5px;
 }
 
 ol.breadcrumb {
-    margin-left: 145px;
-    width: 240px;
+  margin-left: 145px;
+  width: 240px;
 }
-
-
-
 
 /* desktop */
 @media screen and (min-width: 968px) {
   .span-list {
     width: 16%;
   }
-  .payoff{
+  .payoff {
     width: 30%;
   }
 }
@@ -226,14 +221,13 @@ ol.breadcrumb {
   .span-list {
     width: 30%;
   }
-  .payoff{
+  .payoff {
     width: 45%;
   }
 }
 /* Mobile */
 @media screen and (max-width: 767px) {
   .span-list {
-    
     width: 45%;
   }
   body {
@@ -261,32 +255,31 @@ ol.breadcrumb {
     margin: auto;
     font-size: 16px;
   }
-  .payoff{
+  .payoff {
     width: 90%;
   }
 }
 
-
 /* Modal add staffs */
-.modal-add-staff{
+.modal-add-staff {
   display: none;
   width: 100%;
-  height:100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   background-color: rgb(0, 0, 0, 0.5);
-  z-index:100;
+  z-index: 100;
 }
-.modal-add-staff-container{
+.modal-add-staff-container {
   width: 40%;
   position: fixed;
   top: 50%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
 }
-.modal-add-staff-content{
+.modal-add-staff-content {
   color: #0f0f0f;
 }
