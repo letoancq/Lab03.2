@@ -1,5 +1,6 @@
 import React from "react";
 import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
+import "../Department/department.css"
 
 class DepartmentsList extends React.Component {
   handleDepartmentsClick = (department) => {
@@ -22,8 +23,9 @@ class DepartmentsList extends React.Component {
           className="span-list"
           onClick={() => this.handleDepartmentsClick(department)}
         >
-          <div key={department.id} className="col">
+          <div key={department.id} className="col departmentinfo">
             <h4 className="department-name" onClick = {() => this.handleDataClick(department)}>{department.name}</h4>
+            <p>Số nhân viên :{department.numberOfStaff}</p>
           </div>
         </div>
       );

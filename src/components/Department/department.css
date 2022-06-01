@@ -1,0 +1,10 @@
+
+.departmentinfo{
+    padding: 8px 0;
+    text-align: center;
+    width: 200px;
+    background-color: #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

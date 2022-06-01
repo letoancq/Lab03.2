@@ -10,13 +10,13 @@ const DepartmentData = (props) => {
   let name = String(params.get("name"));
 
   useEffect(() => {
-    const departmentDataFilter = STAFFS.filter(departmentss => {
+    const departmentDataFilter = STAFFS.filter((departmentss) => {
       return departmentss.department.name === name;
     });
-    
-    setDepartmentData(departmentDataFilter[0]);
+
+    setDepartmentData(departmentDataFilter);
   }, [name]);
-  console.log( departmentData);
+  console.log(departmentData);
   return (
     <React.Fragment>
       <Breadcrumb>
@@ -25,18 +25,21 @@ const DepartmentData = (props) => {
         </BreadcrumbItem>
         <BreadcrumbItem active>{name}</BreadcrumbItem>
       </Breadcrumb>
-      {departmentData && Object.keys(departmentData).length > 0 && (
-        <div className="form-info" key={departmentData.id}>
-          <span
-          className="span-list"
-        >
-          <div key={departmentData.id} className="col">
-            <img src={departmentData.image} alt={departmentData.name} />
-            <h4>{departmentData.name}</h4>
-          </div>
-        </span>
-        </div>
-      )}
+      {departmentData &&
+        Object.keys(departmentData).length > 0 &&
+        departmentData.map((staff) => {
+          return (
+            <div className="form-info" key={staff.id}>
+              <span className="span-list col-4">
+                <div key={staff.id} className="col">
+                  <img src={staff.image} alt={staff.name} />
+                  <h4>{staff.name}</h4>
+                </div>
+              </span>
+            </div>
+          );
+        })}
+      
     </React.Fragment>
   );
 };
