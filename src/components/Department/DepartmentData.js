@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { STAFFS } from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import dateFormat from "dateformat";
 
 const DepartmentData = (props) => {
   const [departmentData, setDepartmentData] = useState([]);
