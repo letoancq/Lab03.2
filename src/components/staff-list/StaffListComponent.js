@@ -25,7 +25,6 @@ const StaffList = (props) => {
     name: "",
     modalOpen: false,
   });
-  console.log(props)
   const handleOnClickEmployee = (info) => {
     props.history.push({
       pathname: `/info`,
@@ -70,7 +69,6 @@ const StaffList = (props) => {
   };
 
   const toggleModal = () => {
-    
     setState({
       ...state,
       modalOpen: !state.modalOpen,
@@ -96,26 +94,26 @@ const StaffList = (props) => {
   return (
     <div className="container-staff">
       <h3 className="list-staffs">Danh sách nhân viên</h3>
-      <Button outline onClick={toggleModal}>
-        <span className="fa fa-plus fa-lg"></span>
-      </Button>
       <div className="col-12 col-md-6 mt-3">
-          <form onSubmit={timNhanVien} className="form-group row">
-            <div className="col-8 col-md-8">
-              <Input
-                type="text"
-                className="form-control"
-                name="nameSearch"
-                placeholder="Tìm kiếm nhân viên..."
-              />
-            </div>
-            <div className="col-4 col-md-4">
-              <button className="btn btn-success" type="submit">
-                Tìm kiếm
-              </button>
-            </div>
-          </form>
-        </div>
+        <form onSubmit={timNhanVien} className="form-group row">
+          <div className="col-8 col-md-8">
+            <Input
+              type="text"
+              className="form-control"
+              name="nameSearch"
+              placeholder="Tìm kiếm nhân viên..."
+            />
+          </div>
+          <div className="col-4 col-md-4">
+            <Button className="btn btn-success" type="submit">
+              Tìm kiếm
+            </Button>
+      <Button outline onClick={toggleModal} style={{marginLeft:'8px'}}>
+        <span>Thêm</span>
+      </Button>
+          </div>
+        </form>
+      </div>
       <div className="staff">{list}</div>
       <Modal isOpen={state.modalOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Thêm nhân viên</ModalHeader>
@@ -320,6 +318,5 @@ const StaffList = (props) => {
     </div>
   );
 };
-
 
 export default StaffList;

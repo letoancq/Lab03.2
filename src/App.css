@@ -39,13 +39,10 @@ ul li {
 }
 span {
   width: 45%;
-  border: 1px solid;
   margin: 6px auto;
   cursor: pointer;
   text-align: center;
   padding: 4px 0;
-  border-radius: 8px;
-  background-color: #abe0eb;
 }
 
 .col {
