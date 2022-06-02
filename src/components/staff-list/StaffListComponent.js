@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalBody,
   Row,
+  Input,
   Label,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
@@ -24,6 +25,7 @@ const StaffList = (props) => {
     name: "",
     modalOpen: false,
   });
+  console.log(props)
   const handleOnClickEmployee = (info) => {
     props.history.push({
       pathname: `/info`,
@@ -60,7 +62,15 @@ const StaffList = (props) => {
     });
   };
 
+  const timNhanVien = (event) => {
+    const target = event.target;
+    event.preventDefault();
+    const nameSearch = target.nameSearch.value;
+    setState({ ...state, name: nameSearch });
+  };
+
   const toggleModal = () => {
+    
     setState({
       ...state,
       modalOpen: !state.modalOpen,
@@ -89,6 +99,23 @@ const StaffList = (props) => {
       <Button outline onClick={toggleModal}>
         <span className="fa fa-plus fa-lg"></span>
       </Button>
+      <div className="col-12 col-md-6 mt-3">
+          <form onSubmit={timNhanVien} className="form-group row">
+            <div className="col-8 col-md-8">
+              <Input
+                type="text"
+                className="form-control"
+                name="nameSearch"
+                placeholder="Tìm kiếm nhân viên..."
+              />
+            </div>
+            <div className="col-4 col-md-4">
+              <button className="btn btn-success" type="submit">
+                Tìm kiếm
+              </button>
+            </div>
+          </form>
+        </div>
       <div className="staff">{list}</div>
       <Modal isOpen={state.modalOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Thêm nhân viên</ModalHeader>
@@ -293,5 +320,6 @@ const StaffList = (props) => {
     </div>
   );
 };
+
 
 export default StaffList;
