@@ -257,3 +257,16 @@ ol.breadcrumb {
   }
 }
 
+/* Form group */
+.form-group{
+  width: 50%;
+  float: right;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.btn-success{
+margin-right: 16px;
+}

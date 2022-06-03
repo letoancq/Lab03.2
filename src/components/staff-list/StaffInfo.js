@@ -13,7 +13,7 @@ const StaffInfo = (props) => {
     })[0];
     setStaffData(staffDataFilter);
   }, [params]);
-
+console.log(staffData)
   return (
     <React.Fragment>
       <Breadcrumb>

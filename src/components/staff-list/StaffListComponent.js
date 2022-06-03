@@ -8,7 +8,6 @@ import {
   ModalBody,
   Row,
   Label,
-  FormFeedback,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
@@ -119,11 +118,11 @@ const StaffList = (props) => {
           <button className="btn btn-success" type="submit">
             Tìm kiếm
           </button>
-        </div>
-      </form>
       <Button outline onClick={toggleModal}>
         <span className="fa fa-plus fa-lg"></span>
       </Button>
+        </div>
+      </form>
       <div className="staff">{list}</div>
       <Modal isOpen={state.modalOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Thêm nhân viên</ModalHeader>
