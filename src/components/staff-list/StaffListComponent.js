@@ -23,8 +23,10 @@ const soDuong = (val) => !isNumber(val) || val >= 0;
 
 const StaffList = (props) => {
   const [state, setState] = useState({
+    staffs: STAFFS,
     name: "",
     modalOpen: false,
+    strSearch: "a",
   });
   const handleOnClickEmployee = (info) => {
     props.history.push({
@@ -62,6 +64,14 @@ const StaffList = (props) => {
     });
   };
 
+  const handleSearch = (e) => {
+    const search = e.target;
+    e.preventDefault();
+    const nameSearch = search.nameSearch.value;
+    setState({ ...state, name: nameSearch });
+    console.log(nameSearch);
+  };
+
   const toggleModal = () => {
     setState({
       ...state,
@@ -69,25 +79,48 @@ const StaffList = (props) => {
     });
   };
 
-  const list = STAFFS.map((staff) => {
-    return (
-      <span
-        className="span-list"
-        onClick={() => {
-          handleOnClickEmployee(staff);
-        }}
-      >
-        <div key={staff.id} className="col">
-          <img src={staff.image} alt={staff.name} />
-          <h4>{staff.name}</h4>
-        </div>
-      </span>
-    );
-  });
+  const list = state.staffs
+    .filter((staff) => {
+      if (state.name === "") return staff;
+      else if (staff.name.toLowerCase().includes(state.name.toLowerCase()))
+        return staff;
+      return 0;
+    })
+    .map((staff) => {
+      return (
+        <span
+          key={staff.id}
+          className="span-list"
+          onClick={() => {
+            handleOnClickEmployee(staff);
+          }}
+        >
+          <div key={staff.id} className="col">
+            <img src={staff.image} alt={staff.name} />
+            <h4>{staff.name}</h4>
+          </div>
+        </span>
+      );
+    });
 
   return (
     <div className="container-staff">
       <h3 className="list-staffs">Danh sách nhân viên</h3>
+      <form onSubmit={handleSearch} className="form-group row">
+        <div className="col-8 col-md-8">
+          <Input
+            type="text"
+            className="form-control"
+            name="nameSearch"
+            placeholder="Tìm kiếm nhân viên..."
+          />
+        </div>
+        <div className="col-4 col-md-4">
+          <button className="btn btn-success" type="submit">
+            Tìm kiếm
+          </button>
+        </div>
+      </form>
       <Button outline onClick={toggleModal}>
         <span className="fa fa-plus fa-lg"></span>
       </Button>
