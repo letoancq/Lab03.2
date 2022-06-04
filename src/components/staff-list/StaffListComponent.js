@@ -13,7 +13,7 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
 
 const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !val && val.length <= len;
+const maxLength = (len) => (val) => val && val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => !isNaN(Number(val));
 const minNum = (val) => !required(val) || !isNumber(val) || val >= 1;
@@ -138,7 +138,7 @@ const StaffList = (props) => {
                   className="form-control"
                   id="name"
                   name="name"
-                  vallidate={{
+                  validators={{
                     required,
                     minLength: minLength(3),
                     maxLength: maxLength(15),
@@ -146,7 +146,7 @@ const StaffList = (props) => {
                 />
                 <Errors
                   model=".name"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -167,13 +167,13 @@ const StaffList = (props) => {
                   className="form-control"
                   id="doB"
                   name="doB"
-                  vallidate={{
+                  validators={{
                     required,
                   }}
                 />
                 <Errors
                   model=".doB"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -192,13 +192,13 @@ const StaffList = (props) => {
                   className="form-control"
                   id="startDate"
                   name="startDate"
-                  vallidate={{
+                  validators={{
                     required,
                   }}
                 />
                 <Errors
                   model=".startDate"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -236,7 +236,7 @@ const StaffList = (props) => {
                   className="form-control"
                   id="salaryScale"
                   name="salaryScale"
-                  vallidate={{
+                  validators={{
                     required,
                     isNumber,
                     minNum,
@@ -245,7 +245,7 @@ const StaffList = (props) => {
                 />
                 <Errors
                   model=".salaryScale"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -265,7 +265,6 @@ const StaffList = (props) => {
                   model=".annualLeave"
                   id="annualLeave"
                   name="annualLeave"
-                  defaultValue="0"
                   className="form-control"
                   validators={{
                     required,
@@ -294,7 +293,6 @@ const StaffList = (props) => {
                   model=".overTime"
                   id="overTime"
                   name="overTime"
-                  defaultValue="0"
                   className="form-control"
                   validators={{
                     required,
