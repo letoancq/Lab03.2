@@ -1,161 +1,28 @@
-import React, { useState } from "react";
+import React from 'react';
 import {
-  Button,
-  Modal,
-  Col,
-  Input,
-  ModalHeader,
-  ModalBody,
-  Row,
-  Label,
-} from "reactstrap";
+    Button,
+    Modal,
+    Col,
+    ModalHeader,
+    ModalBody,
+    Row,
+    Label,
+  } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
-import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
-import {  Fade } from "react-animation-components";
-import {Loading} from "../Loading";
 
 
-
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => val && val.length <= len;
-const minLength = (len) => (val) => val && val.length >= len;
-const isNumber = (val) => !isNaN(Number(val));
-const minNum = (val) => !required(val) || !isNumber(val) || val >= 1;
-const maxNum = (val) => val <= 3 || !isNumber(val);
-const soDuong = (val) => !isNumber(val) || val >= 0;
-
-const StaffList = (props) => {
-  console.log(props)
-  const [state, setState] = useState({
-    staffs: STAFFS,
-    name: "",
-    modalOpen: false,
-    strSearch: "a",
-  });
-  const handleOnClickEmployee = (info) => {
-    props.history.push({
-      pathname: `/info`,
-      search: `id=${info.id}`,
-    });
-  };
-
-
-
-  const handleSubmit = (value) => {
-    const department = DEPARTMENTS.find((x) => x.id === value.department);
-    const newStaff = {
-      name: value.name,
-      doB: value.doB,
-      startDate: value.startDate,
-      department: department,
-      salaryScale: value.salaryScale,
-      annualLeave: value.annualLeave,
-      overTime: value.overTime,
-      image: "/assets/images/alberto.png",
-    };
-    if (
-      !value.name ||
-      !value.doB ||
-      !value.startDate ||
-      !value.department ||
-      !value.salaryScale ||
-      !value.overTime ||
-      !value.image
-    )
-      this.props.push(newStaff);
-
-    setState({
-      ...state,
-      modalOpen: !state.modalOpen,
-    });
-  };
-
-  const handleSearch = (e) => {
-    const search = e.target;
-    e.preventDefault();
-    const nameSearch = search.nameSearch.value;
-    setState({ ...state, name: nameSearch });
-    console.log(nameSearch);
-  };
-
-  const toggleModal = () => {
-    setState({
-      ...state,
-      modalOpen: !state.modalOpen,
-    });
-  };
-
-  const list = state.staffs
-    .filter((staff) => {
-      if (state.name === "") return staff;
-      else if (staff.name.toLowerCase().includes(state.name.toLowerCase()))
-        return staff;
-      return 0;
-    })
-    .map((staff) => {
-      return (
-        <Fade in >
-        <span
-          key={staff.id}
-          className="span-list"
-          onClick={() => {
-            handleOnClickEmployee(staff);
-          }}
-        >
-          <div key={staff.id} className="col">
-            <img src={staff.image} alt={staff.name} />
-            <h4>{staff.name}</h4>
-          </div>
-        </span>
-        </Fade>
-      );
-    });
-
-
-    if (props.staffs.isLoading) {
-      return (
-        <div className="container">
-          <div className="row">
-            <Loading />
-          </div>
-        </div>
-      );
-    } else if (props.staffs.errMess) {
-      return (
-        <div className="container">
-          <div className="row">
-            <h4>{props.dishes.errMess}</h4>
-          </div>
-        </div>
-      );
-    } else
-
-  return (
-    <div className="container-staff">
-      <h3 className="list-staffs">Danh sách nhân viên</h3>
-      <form onSubmit={handleSearch} className="form-group row">
-        <div className="col-8 col-md-8">
-          <Input
-            type="text"
-            className="form-control"
-            name="nameSearch"
-            placeholder="Tìm kiếm nhân viên..."
-          />
-        </div>
-        <div className="col-4 col-md-4">
-          <button className="btn btn-success" type="submit">
-            Tìm kiếm
-          </button>
-      <Button outline onClick={toggleModal}>
-        <span className="fa fa-plus fa-lg"></span>
-      </Button>
-        </div>
-      </form>
-      <div className="staff">{list}</div>
-      <Modal isOpen={state.modalOpen} toggle={toggleModal}>
-        <ModalHeader toggle={toggleModal}>Thêm nhân viên</ModalHeader>
+const modalAdd = () => {
+    const required = (val) => val && val.length;
+    const maxLength = (len) => (val) => val && val.length <= len;
+    const minLength = (len) => (val) => val && val.length >= len;
+    const isNumber = (val) => !isNaN(Number(val));
+    const minNum = (val) => !required(val) || !isNumber(val) || val >= 1;
+    const maxNum = (val) => val <= 3 || !isNumber(val);
+    const soDuong = (val) => !isNumber(val) || val >= 0;
+<Modal>
+        <ModalHeader >Thêm nhân viên</ModalHeader>
         <ModalBody>
-          <LocalForm onSubmit={handleSubmit}>
+          <LocalForm >
             <Row className="control-group mb-4">
               <Label htmlFor="name" md={4}>
                 Tên
@@ -350,8 +217,6 @@ const StaffList = (props) => {
           </LocalForm>
         </ModalBody>
       </Modal>
-    </div>
-  );
-};
+}
 
-export default StaffList;
+export default modalAdd;

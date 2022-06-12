@@ -3,6 +3,9 @@ import { STAFFS } from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
+
+
 
 const StaffInfo = (props) => {
   const [staffData, setStaffData] = useState({});
@@ -22,6 +25,13 @@ console.log(staffData)
         </BreadcrumbItem>
         <BreadcrumbItem active>{staffData.name}</BreadcrumbItem>
       </Breadcrumb>
+
+      <FadeTransform
+        in
+        transformProps={{
+          exitTransform: "scale(0.5) translateY(-50%)",
+        }}
+      >
       {staffData && Object.keys(staffData).length > 0 && (
         <div className="form-info" key={staffData.id}>
           <div className="staff-image">
@@ -39,6 +49,7 @@ console.log(staffData)
           </div>
         </div>
       )}
+      </FadeTransform>
     </React.Fragment>
   );
 };
