@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { STAFFS } from "../../shared/staffs";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";
-import { FadeTransform, Fade, Stagger } from "react-animation-components";
+import { FadeTransform } from "react-animation-components";
 
 
 
 const StaffInfo = (props) => {
   const [staffData, setStaffData] = useState({});
   const params = new URLSearchParams(window.location.search);
+
+console.log(props, 44444)
+
+
   useEffect(() => {
-    const staffDataFilter = STAFFS.filter((staff) => {
+    const staffDataFilter = props.staffs.filter((staff) => {
       return staff.id === Number(params.get("id"));
     })[0];
     setStaffData(staffDataFilter);
   }, [params]);
-console.log(staffData)
+
   return (
     <React.Fragment>
       <Breadcrumb>

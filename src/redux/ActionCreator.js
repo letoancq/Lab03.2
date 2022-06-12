@@ -2,29 +2,96 @@ import * as ActionTypes from "./ActionType";
 import { baseUrl } from "../shared/baseUrl";
 
 // -----------------STAFFS---------------------//
-export const fetchStaffs = () => (dispatch) => {
-  dispatch(staffsLoading(true));
-  return fetch(baseUrl + "staffs")
-    .then(
-      (response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          var error = new Error(
-            "Error " + response.status + ": " + response.statusText
-          );
-          error.response = response;
-          throw error;
+
+export const baseMethod = ({methodName, url, dispatch, options}) => {
+  dispatch(loading(true));
+  switch (methodName) {
+    case "GET":
+      return fetch(url).then(
+        (response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            var error = new Error(
+              "Error " + response.status + ": " + response.statusText
+            );
+            error.response = response;
+            throw error;
+          }
+        },
+        (error) => {
+          var errmess = new Error(error.message);
+          throw errmess;
         }
-      },
-      (error) => {
-        var errmess = new Error(error.message);
-        throw errmess;
-      }
-    )
-    .then((response) => response.json())
-    .then((staffs) => dispatch(addStaffs(staffs)))
-    .catch((error) => dispatch(staffsFailed(error.message)));
+      );
+    case "POST":
+      return  fetch(url, {
+        method: methodName,
+        body: JSON.stringify(options.data),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(
+          (response) => {
+            if (response.ok) {
+              return response;
+            }
+    
+            if (!Response.ok) {
+              let err = new Error(
+                "Error " + response.status + ": " + response.statusText
+              );
+              throw err;
+            }
+          },
+          (err) => {
+            let errmess = new Error(err.message);
+            throw errmess;
+          }
+        )
+        .then((res) => res.json())
+        .then((list) => {
+          dispatch(addStaffs(list));
+        });
+        default:
+  }
+
+}
+
+export const getMethod = ({url, dispatch, options}) => {
+  return baseMethod('GET', url, dispatch, options);
+}
+
+export const postMethod = ({url, dispatch, options}) => {
+  return baseMethod('POST', url, dispatch, options);
+}
+
+export const putMethod = ({url, dispatch, options}) => {
+  return baseMethod('PUT', url, dispatch, options);
+}
+
+export const deleteMethod = ({url, dispatch, options}) => {
+  return baseMethod('DELETE', url, dispatch, options);
+}
+
+export const fetchStaffs = () => (dispatch) => {
+  dispatch(loading(true));
+      return fetch(baseUrl + 'staffs').then(
+        (response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            var error = new Error(
+              "Error " + response.status + ": " + response.statusText
+            );
+            error.response = response;
+            throw error;
+          }
+        },
+        (error) => {
+          var errmess = new Error(error.message);
+          throw errmess;
+        }
+      );
 };
 
 export const staffsLoading = () => {
@@ -49,29 +116,33 @@ export const addStaffs = (staffs) => {
 
 // ----------------------DEPARTMENTS-----------------//
 export const fetchDepartments = () => (dispatch) => {
-  dispatch(departmentsLoading(true));
-  return fetch(baseUrl + "departments")
-    .then(
-      (response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          var error = new Error(
-            "Error " + response.status + ": " + response.statusText
-          );
-          error.response = response;
-          throw error;
-        }
-      },
-      (error) => {
-        var errmess = new Error(error.message);
-        throw errmess;
+  dispatch(loading(true));
+  return fetch(baseUrl + 'departments').then(
+    (response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        var error = new Error(
+          "Error " + response.status + ": " + response.statusText
+        );
+        error.response = response;
+        throw error;
       }
-    )
-    .then((response) => response.json())
-    .then((departments) => dispatch(addDepartments(departments)))
-    .catch((error) => dispatch(departmentsFailed(error.message)));
+    },
+    (error) => {
+      var errmess = new Error(error.message);
+      throw errmess;
+    }
+  );
 };
+
+
+
+export const loading = () => {
+  return {
+    type: ActionTypes.LOADING,
+  };
+}
 
 export const departmentsLoading = () => {
   return {

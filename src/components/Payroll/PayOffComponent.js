@@ -1,12 +1,14 @@
 import React from "react";
-import { STAFFS } from "../../shared/staffs";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { Link } from "react-router-dom";
 
 
-class PayRoll extends React.Component {
+class Salarys extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    const list = STAFFS.map((staff) => {
+    const list = this.props.staffs.map((staff) => {
       const pay = (
         staff.salaryScale * 3000000 +
         staff.overTime * 200000
@@ -49,4 +51,4 @@ class PayRoll extends React.Component {
   }
 }
 
-export default PayRoll;
+export default Salarys;

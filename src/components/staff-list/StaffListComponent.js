@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import {
   Button,
   Modal,
@@ -10,9 +10,10 @@ import {
   Label,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
-import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
 import {  Fade } from "react-animation-components";
 import {Loading} from "../Loading";
+import {  withRouter } from "react-router-dom";
+
 
 
 
@@ -25,13 +26,14 @@ const maxNum = (val) => val <= 3 || !isNumber(val);
 const soDuong = (val) => !isNumber(val) || val >= 0;
 
 const StaffList = (props) => {
-  console.log(props)
   const [state, setState] = useState({
-    staffs: STAFFS,
+    staffs: props.staffs,
+    departments: props.departments,
     name: "",
     modalOpen: false,
     strSearch: "a",
   });
+  console.log(props)
   const handleOnClickEmployee = (info) => {
     props.history.push({
       pathname: `/info`,
@@ -42,7 +44,7 @@ const StaffList = (props) => {
 
 
   const handleSubmit = (value) => {
-    const department = DEPARTMENTS.find((x) => x.id === value.department);
+    const department = this.props.departments.find((x) => x.id === value.department);
     const newStaff = {
       name: value.name,
       doB: value.doB,
@@ -354,4 +356,4 @@ const StaffList = (props) => {
   );
 };
 
-export default StaffList;
+export default withRouter( StaffList);

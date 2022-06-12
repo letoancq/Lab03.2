@@ -4,57 +4,95 @@ import Footer from "./FooterComponent";
 import StaffInfo from "./staff-list/StaffInfo";
 import StaffList from "./staff-list/StaffListComponent";
 import DepartmentsList from "./Department/DepartmentListComponent";
-import PayRoll from "./Payroll/PayOffComponent";
+import Salarys from "./Payroll/PayOffComponent";
 import NotFound from "./NotFoundPage";
 import DepartmentData from "./Department/DepartmentData";
 import { Switch, Route, withRouter } from "react-router-dom";
-import {fetchStaffs, fetchDepartments, fetchSalarys} from "../redux/ActionCreator"
+import {
+  fetchStaffs,
+  fetchDepartments,
+  fetchSalarys,
+} from "../redux/ActionCreator";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    staffs: state.staffs,
-    salarys: state.salarys,
-    departments: state.departments,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  fetchStaffs: () => {
-    dispatch(fetchStaffs());
-  },
-  fetchDepartments: () => {
-    dispatch(fetchDepartments());
-  },
-  fetchSalarys: () => {
-    dispatch(fetchSalarys());
-  },
-});
 class Main extends Component {
-
-  componentDidMount = () => {
-    this.props.fetchStaffs();
-    this.props.fetchDepartments();
-    this.props.fetchSalarys();
+  constructor(props) {
+    super(props);
+    this.state = {
+      staffs: [],
+      departments: [],
+    };
   }
 
+  componentDidMount = async () => {
+    const { fetchStaffs } = this.props;
+    const dataStaffs = await fetchStaffs();
+    this.setState({
+      staffs: dataStaffs,
+    });
+
+    const { fetchDepartments } = this.props;
+    const dataDepartments = await fetchDepartments();
+    this.setState({
+      departments: dataDepartments,
+    });
+    console.log(this.state);
+  };
   render() {
     const HomePage = () => {
-        return (
-          <StaffList staffs={this.props.staffs} department={this.props.departments}/>
-        )
-        }
+      return (
+        <StaffList
+          staffs={this.state.staffs}
+          departments={this.state.departments}
+        />
+      );
+    };
+
+    const ListDepartments = () => {
+      return (
+        <DepartmentsList
+          staffs={this.state.staffs}
+          departments={this.state.departments}
+        />
+      );
+    };
+    const PayRoll = () => {
+      return (
+        <Salarys
+          staffs={this.state.staffs}
+          departments={this.state.departments}
+        />
+      );
+    };
+
+    const StaffInfo = () => {
+      return (
+        <StaffInfo
+          staffs={this.state.staffs}
+          departments={this.state.departments}
+        />
+      );
+    };
+
+    const DepartmentData = () => {
+      return (
+        <DepartmentData
+          staffs={this.state.staffs}
+          departments={this.state.departments}
+        />
+      );
+    };
+
     return (
       <div>
         <Header />
 
         <Switch>
-          <Route exact path="/info" component={() => <StaffInfo />} />
-          <Route path="/departmentlist" component={DepartmentsList} />
-          <Route exact path="/dep" component={() => <DepartmentData />} />
+          <Route exact path="/info" component={StaffInfo} />
+          <Route path="/departmentlist" component={ListDepartments} />
+          <Route exact path="/dep" component={DepartmentData} />
           <Route path="/payoff" component={PayRoll} />
-          <Route path="/" component={HomePage } />
+          <Route path="/" component={HomePage} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
@@ -62,5 +100,23 @@ class Main extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    staffs: state.staffs,
+    salarys: state.salarys,
+    departments: state.departments,
+  };
+};
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      fetchStaffs: fetchStaffs,
+      fetchDepartments: fetchDepartments,
+      fetchSalarys: fetchSalarys,
+    },
+    dispatch
+  );
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

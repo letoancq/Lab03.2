@@ -1,23 +1,28 @@
 import React from "react";
-import { DEPARTMENTS, STAFFS } from "../../shared/staffs";
 import "../Department/department.css"
+import {  withRouter } from "react-router-dom";
+
 
 class DepartmentsList extends React.Component {
+  constructor(props){
+    super(props);
+    console.log(props, 4444)
+  }
   handleDepartmentsClick = (department) => {
     this.props.history.push({
       pathname: `/dep`,
-      search: `name=${department.name}`,
+     search: `name=${department.name}`,
       
     });
   };
   
   handleDataClick = (department) => {
     return(
-      STAFFS.filter(b => b.department.name === department.name)
+      this.props.staffs.filter(b => b.department.name === department.name)
     )
   }
   render() {
-    const listDepartments = DEPARTMENTS.map((department) => {
+    const listDepartments = this.props.departments.map((department) => {
       return (
         <div
           className="span-list"
@@ -40,4 +45,4 @@ class DepartmentsList extends React.Component {
   }
 }
 
-export default DepartmentsList;
+export default withRouter( DepartmentsList);
