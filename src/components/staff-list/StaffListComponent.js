@@ -33,7 +33,8 @@ const StaffList = (props) => {
     modalOpen: false,
     strSearch: "a",
   });
-  console.log(props)
+
+  
   const handleOnClickEmployee = (info) => {
     props.history.push({
       pathname: `/info`,

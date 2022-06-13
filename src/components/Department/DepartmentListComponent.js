@@ -4,25 +4,25 @@ import {  withRouter } from "react-router-dom";
 
 
 class DepartmentsList extends React.Component {
-  constructor(props){
-    super(props);
-    console.log(props, 4444)
-  }
+  
+
   handleDepartmentsClick = (department) => {
+
     this.props.history.push({
       pathname: `/dep`,
      search: `name=${department.name}`,
       
     });
   };
+
   
   handleDataClick = (department) => {
-    console.log(department)
     return(
-      this.props.staffs.filter(b => b.department.name === department.name)
+      this.props.staffs.filter(b => b.departmentId === department.name)
     )
   }
   render() {
+    console.log(this.props);
     const listDepartments = this.props.departments.map((department) => {
       return (
         <div

@@ -4,19 +4,27 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import "./department.css"
 
 const DepartmentData = (props) => {
-  console.log(props)
   const [departmentData, setDepartmentData] = useState([]);
   const params = new URLSearchParams(window.location.search);
   let name = String(params.get("name"));
 
-  useEffect(() => {
-    const departmentDataFilter = props.staffs.staffs.filter((departmentss) => {
-      return departmentss.department.name === name;
-    });
+  const depId = props.departments.filter((dep) => {
+    return dep.name === name;
+  })
 
+ const a = depId.find(e => {return e.id});
+ console.log(departmentDataFilter);
+
+  const departmentDataFilter = props.staffs.filter((departmentss) => {
+    return departmentss.departmentId === a.id;
+  });
+
+  useEffect(() => {
     setDepartmentData(departmentDataFilter);
   }, [name]);
-  console.log(departmentData);
+
+
+
   return (
     <React.Fragment>
       <Breadcrumb>
