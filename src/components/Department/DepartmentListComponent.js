@@ -17,6 +17,7 @@ class DepartmentsList extends React.Component {
   };
   
   handleDataClick = (department) => {
+    console.log(department)
     return(
       this.props.staffs.filter(b => b.department.name === department.name)
     )

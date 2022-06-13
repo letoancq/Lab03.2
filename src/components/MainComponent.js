@@ -65,7 +65,7 @@ class Main extends Component {
       );
     };
 
-    const StaffInfo = () => {
+    const StaffInfos = () => {
       return (
         <StaffInfo
           staffs={this.state.staffs}
@@ -74,7 +74,7 @@ class Main extends Component {
       );
     };
 
-    const DepartmentData = () => {
+    const DepartmentDatas = () => {
       return (
         <DepartmentData
           staffs={this.state.staffs}
@@ -88,9 +88,9 @@ class Main extends Component {
         <Header />
 
         <Switch>
-          <Route exact path="/info" component={StaffInfo} />
+          <Route exact path="/info" component={StaffInfos} />
           <Route path="/departmentlist" component={ListDepartments} />
-          <Route exact path="/dep" component={DepartmentData} />
+          <Route exact path="/dep" component={DepartmentDatas} />
           <Route path="/payoff" component={PayRoll} />
           <Route path="/" component={HomePage} />
           <Route component={NotFound} />

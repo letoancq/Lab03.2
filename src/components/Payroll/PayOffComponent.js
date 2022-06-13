@@ -1,18 +1,13 @@
 import React from "react";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import "./Pay.css"
 
 
 class Salarys extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+ 
   render() {
     const list = this.props.staffs.map((staff) => {
-      const pay = (
-        staff.salaryScale * 3000000 +
-        staff.overTime * 200000
-      ).toFixed(0);
       return (
         <div className="payoff">
           <div className="card-payoff">
@@ -25,7 +20,7 @@ class Salarys extends React.Component {
               <p className="staff-overTime">
                 Số ngày làm thêm : {staff.overTime}
               </p>
-              <div className="infopay">Lương : {pay}</div>
+              <div className="infopay">Lương : {staff.salary}</div>
             </div>
           </div>
         </div>
@@ -44,6 +39,16 @@ class Salarys extends React.Component {
         
         <div className="container-staff">
           <h3 className="list-staffs">Bảng lương nhân viên</h3>
+          <div>
+          <Button >
+            <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Lương tăng
+            dần
+          </Button>
+          <Button >
+            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Lương giảm
+            dần
+          </Button>
+        </div>
           <div id="table-pay">{list}</div>
         </div>
       </React.Fragment>

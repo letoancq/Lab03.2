@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import "./department.css"
 
 const DepartmentData = (props) => {
   console.log(props)

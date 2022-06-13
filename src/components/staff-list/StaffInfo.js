@@ -9,16 +9,19 @@ import { FadeTransform } from "react-animation-components";
 const StaffInfo = (props) => {
   const [staffData, setStaffData] = useState({});
   const params = new URLSearchParams(window.location.search);
-
-console.log(props, 44444)
-
-
+  
+  const staffDataFilter = props.staffs.filter((staff) => {
+    return staff.id === Number(params.get("id"));
+  })[0];
   useEffect(() => {
-    const staffDataFilter = props.staffs.filter((staff) => {
-      return staff.id === Number(params.get("id"));
-    })[0];
     setStaffData(staffDataFilter);
   }, [params]);
+ 
+
+  
+  const department = props.departments.find(
+    (x) => x.id === staffDataFilter.departmentId
+  );
 
   return (
     <React.Fragment>
@@ -46,7 +49,7 @@ console.log(props, 44444)
             <p>
               Ngày vào công ty : {dateFormat(staffData.startDate, "dd/mm/yyyy")}{" "}
             </p>
-            <p>Phòng ban : {staffData.department.name}</p>
+            <p>Phòng ban : {department.name}</p>
             <p>Số ngày nghỉ còn lại : {staffData.annualLeave}</p>
             <p>Số ngày đã làm thêm : {staffData.overTime}</p>
           </div>
