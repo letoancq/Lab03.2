@@ -1,11 +1,10 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./Pay.css"
-
+import "./Pay.css";
+import { FadeTransform } from "react-animation-components";
 
 class Salarys extends React.Component {
- 
   render() {
     const list = this.props.staffs.map((staff) => {
       return (
@@ -27,7 +26,6 @@ class Salarys extends React.Component {
       );
     });
 
-
     return (
       <React.Fragment>
         <Breadcrumb>
@@ -36,20 +34,26 @@ class Salarys extends React.Component {
           </BreadcrumbItem>
           <BreadcrumbItem active>PayOff</BreadcrumbItem>
         </Breadcrumb>
-        
+
         <div className="container-staff">
           <h3 className="list-staffs">Bảng lương nhân viên</h3>
-          <div>
-          <Button >
-            <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Lương tăng
-            dần
-          </Button>
-          <Button >
-            <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Lương giảm
-            dần
-          </Button>
-        </div>
-          <div id="table-pay">{list}</div>
+          <FadeTransform
+            in
+            fadeProps={{ exitFade: "0", enterFade: "1" }}
+            transformProps={{ exitTransform: "scale(.7) translateY(50%)" }}
+          >
+            <div>
+              <Button>
+                <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> Lương
+                tăng dần
+              </Button>
+              <Button>
+                <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Lương
+                giảm dần
+              </Button>
+            </div>
+            <div id="table-pay">{list}</div>
+          </FadeTransform>
         </div>
       </React.Fragment>
     );

@@ -13,7 +13,6 @@ const DepartmentData = (props) => {
   })
 
  const a = depId.find(e => {return e.id});
- console.log(departmentDataFilter);
 
   const departmentDataFilter = props.staffs.filter((departmentss) => {
     return departmentss.departmentId === a.id;
