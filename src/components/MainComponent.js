@@ -36,7 +36,7 @@ class Main extends Component {
     this.setState({
       departments: dataDepartments,
     });
-    console.log(this.state);
+
   };
   render() {
     const HomePage = () => {

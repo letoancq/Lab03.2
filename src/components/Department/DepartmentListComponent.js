@@ -1,6 +1,8 @@
 import React from "react";
 import "../Department/department.css"
 import {  withRouter } from "react-router-dom";
+import {  FadeTransform } from "react-animation-components";
+
 
 
 class DepartmentsList extends React.Component {
@@ -39,8 +41,15 @@ class DepartmentsList extends React.Component {
 
     return (
       <div className="container-staffs">
+        <FadeTransform
+        in
+        transformProps={{
+          exitTransform: "scale(0.5) translateY(-50%)",
+        }}
+      >
         <h3 className="list-staffs">Danh sách phòng ban</h3>
         <div className="department">{listDepartments}</div>;
+        </FadeTransform>
       </div>
     );
   }

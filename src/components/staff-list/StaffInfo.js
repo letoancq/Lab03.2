@@ -15,7 +15,6 @@ import dateFormat from "dateformat";
 import { FadeTransform } from "react-animation-components";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import "./StaffInfo.css";
-import { EditData } from "../../redux/ActionCreator";
 
 
 const StaffInfo = (props) => {
@@ -45,15 +44,7 @@ const StaffInfo = (props) => {
   );
 
 
-  const handleSubmit = (value) => {
-    const updateStaff = { ...value };
-    updateStaff.id = Number(updateStaff.id);
-    updateStaff.salaryScale = Number(updateStaff.salaryScale);
-    updateStaff.annualLeave = Number(updateStaff.annualLeave);
-    updateStaff.overTime = Number(updateStaff.overTime);
-    updateStaff.image = "/assets/images/alberto.png";
-    EditData(updateStaff);
-  };
+  
 
   return (
     <React.Fragment>

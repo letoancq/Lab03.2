@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import "./department.css"
+import "./department.css";
+import { FadeTransform } from "react-animation-components";
 
 const DepartmentData = (props) => {
   const [departmentData, setDepartmentData] = useState([]);
@@ -26,6 +27,12 @@ const DepartmentData = (props) => {
 
   return (
     <React.Fragment>
+      <FadeTransform
+        in
+        transformProps={{
+          exitTransform: "scale(0.5) translateY(-50%)",
+        }}
+      >
       <Breadcrumb>
         <BreadcrumbItem>
           <Link to="/departmentlist">Dep</Link>
@@ -46,7 +53,7 @@ const DepartmentData = (props) => {
             </div>
           );
         })}
-      
+      </FadeTransform>
     </React.Fragment>
   );
 };
